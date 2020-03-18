@@ -389,7 +389,7 @@ class _AutoSizeTextState extends State<AutoSizeText> {
         strutStyle: widget.strutStyle,
       );
 
-      if (text.children.isNotEmpty) {
+      if (text.children != null && text.children.isNotEmpty) {
         List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
 
         for (var i = 0; i < text.children.length; i++) {
@@ -419,7 +419,7 @@ class _AutoSizeTextState extends State<AutoSizeText> {
       locale: widget.locale,
       strutStyle: widget.strutStyle,
     );
-    if (text.children.isNotEmpty) {
+    if (text.children != null && text.children.isNotEmpty) {
       List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
 
       for (var i = 0; i < text.children.length; i++) {
