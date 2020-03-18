@@ -389,12 +389,17 @@ class _AutoSizeTextState extends State<AutoSizeText> {
         strutStyle: widget.strutStyle,
       );
 
-      wordWrapTp.setPlaceholderDimensions([
-        PlaceholderDimensions(
+      List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
+
+      for (var i = 0; i < text.children.length; i++) {
+        list.add(PlaceholderDimensions(
           size: Size(constraints.maxWidth, constraints.maxHeight),
           alignment: PlaceholderAlignment.baseline,
-        )
-      ]);
+        ));
+      }
+
+      wordWrapTp.setPlaceholderDimensions(list);
+
       wordWrapTp.layout(maxWidth: constraints.maxWidth);
 
       if (wordWrapTp.didExceedMaxLines ||
@@ -412,13 +417,17 @@ class _AutoSizeTextState extends State<AutoSizeText> {
       locale: widget.locale,
       strutStyle: widget.strutStyle,
     );
+    List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
 
-    tp.setPlaceholderDimensions([
-      PlaceholderDimensions(
+    for (var i = 0; i < text.children.length; i++) {
+      list.add(PlaceholderDimensions(
         size: Size(constraints.maxWidth, constraints.maxHeight),
         alignment: PlaceholderAlignment.baseline,
-      )
-    ]);
+      ));
+    }
+
+    tp.setPlaceholderDimensions(list);
+
     tp.layout(maxWidth: constraints.maxWidth);
 
     return !(tp.didExceedMaxLines ||
