@@ -389,16 +389,18 @@ class _AutoSizeTextState extends State<AutoSizeText> {
         strutStyle: widget.strutStyle,
       );
 
-      List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
+      if (text.children.isNotEmpty) {
+        List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
 
-      for (var i = 0; i < text.children.length; i++) {
-        list.add(PlaceholderDimensions(
-          size: Size(constraints.maxWidth, constraints.maxHeight),
-          alignment: PlaceholderAlignment.baseline,
-        ));
+        for (var i = 0; i < text.children.length; i++) {
+          list.add(PlaceholderDimensions(
+            size: Size(constraints.maxWidth, constraints.maxHeight),
+            alignment: PlaceholderAlignment.baseline,
+          ));
+        }
+
+        wordWrapTp.setPlaceholderDimensions(list);
       }
-
-      wordWrapTp.setPlaceholderDimensions(list);
 
       wordWrapTp.layout(maxWidth: constraints.maxWidth);
 
@@ -417,16 +419,18 @@ class _AutoSizeTextState extends State<AutoSizeText> {
       locale: widget.locale,
       strutStyle: widget.strutStyle,
     );
-    List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
+    if (text.children.isNotEmpty) {
+      List<PlaceholderDimensions> list = <PlaceholderDimensions>[];
 
-    for (var i = 0; i < text.children.length; i++) {
-      list.add(PlaceholderDimensions(
-        size: Size(constraints.maxWidth, constraints.maxHeight),
-        alignment: PlaceholderAlignment.baseline,
-      ));
+      for (var i = 0; i < text.children.length; i++) {
+        list.add(PlaceholderDimensions(
+          size: Size(constraints.maxWidth, constraints.maxHeight),
+          alignment: PlaceholderAlignment.baseline,
+        ));
+      }
+
+      tp.setPlaceholderDimensions(list);
     }
-
-    tp.setPlaceholderDimensions(list);
 
     tp.layout(maxWidth: constraints.maxWidth);
 
