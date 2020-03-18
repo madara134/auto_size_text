@@ -368,7 +368,11 @@ class _AutoSizeTextState extends State<AutoSizeText> {
   }
 
   bool _checkTextFits(
-      TextSpan text, double scale, int maxLines, BoxConstraints constraints) {
+    TextSpan text,
+    double scale,
+    int maxLines,
+    BoxConstraints constraints,
+  ) {
     if (!widget.wrapWords) {
       var words = text.toPlainText().split(RegExp('\\s+'));
 
@@ -385,6 +389,12 @@ class _AutoSizeTextState extends State<AutoSizeText> {
         strutStyle: widget.strutStyle,
       );
 
+      wordWrapTp.setPlaceholderDimensions([
+        PlaceholderDimensions(
+          size: Size(constraints.maxWidth, constraints.maxHeight),
+          alignment: PlaceholderAlignment.baseline,
+        )
+      ]);
       wordWrapTp.layout(maxWidth: constraints.maxWidth);
 
       if (wordWrapTp.didExceedMaxLines ||
@@ -403,6 +413,12 @@ class _AutoSizeTextState extends State<AutoSizeText> {
       strutStyle: widget.strutStyle,
     );
 
+    tp.setPlaceholderDimensions([
+      PlaceholderDimensions(
+        size: Size(constraints.maxWidth, constraints.maxHeight),
+        alignment: PlaceholderAlignment.baseline,
+      )
+    ]);
     tp.layout(maxWidth: constraints.maxWidth);
 
     return !(tp.didExceedMaxLines ||
